@@ -39,8 +39,8 @@ $(document).click(function(loc) {
   ],
   'onlineCourses' : [{
     'title' : 'Front End Developer Nanodegree',
-    'school' : 'Udacity',
-    'date' : '2015-2016',
+    'school' : ' Udacity',
+    'date' : '2015 - 2016',
     'url' : 'http://www.udacity.com'
   }
   ]
@@ -139,9 +139,8 @@ education.display = function() {
 
   //Online course logic
 
-  
   for (var i = 0; i < education.onlineCourses.length; i++) {
-    $('#education').append(HTMLonlineStart);
+    $('#education').append(HTMLonlineClasses);
     var formattedOnlineTitle = HTMLonlineTitle.replace('%data%', education.onlineCourses[i].title);
     var formattedOnlineSchool = HTMLonlineSchool.replace('%data%', education.onlineCourses[i].school);
     var formattedOnlineDate = HTMLonlineDates.replace('%data%', education.onlineCourses[i].date);
