@@ -27,22 +27,20 @@ $(document).click(function(loc) {
  //Education Info
 
  var education = {
-  'schools': [
-  {
+  'schools': [{
     'name': 'University of Connecticut',
     'location': 'Storrs, CT',
     'degree': 'BFA M.Ed Dual Degree Program',
-    'majors': ['Music Performance', 'Music Education'],
+    'majors': ['Music Performance',' + ', 'Music Education'],
     'dates': '1999 - 2004',
     'url': 'http://www.uconn.edu/'
   },
   
   ],
-  'onlineCourses' : [
-  {
+  'onlineCourses' : [{
     'title' : 'Front End Developer Nanodegree',
     'school' : 'Udacity',
-    'date' : 'In progress',
+    'date' : '2015-2016',
     'url' : 'http://www.udacity.com'
   }
   ]
@@ -51,8 +49,7 @@ $(document).click(function(loc) {
 // Work Info
 
 var work = {
-  'jobs': [
-  {
+  'jobs': [{
     'employer': 'Learnmetrics',
     'title': 'Cofounder and CEO',
     'location': 'Chicago, IL',
@@ -141,16 +138,18 @@ education.display = function() {
   };
 
   //Online course logic
-  for (var i = 0; i < education.onlineCourses.length; i++) {   
-    $('#education').append(HTMLonlineClasses);
+
+  
+  for (var i = 0; i < education.onlineCourses.length; i++) {
+    $('#education').append(HTMLonlineStart);
     var formattedOnlineTitle = HTMLonlineTitle.replace('%data%', education.onlineCourses[i].title);
-    $('#education').append(HTMLonlineTitle);
     var formattedOnlineSchool = HTMLonlineSchool.replace('%data%', education.onlineCourses[i].school);
-    $('#education').append(HTMLonlineSchool);
     var formattedOnlineDate = HTMLonlineDates.replace('%data%', education.onlineCourses[i].date);
-    $('#education').append(HTMLonlineDates);
     var formattedOnlineURL = HTMLonlineURL.replace('%data%', education.onlineCourses[i].url);
-    $('#education').append(HTMLonlineDates);
+    $('#education').append(formattedOnlineTitle);
+    $('#education').append(formattedOnlineSchool);
+    $('#education').append(formattedOnlineDate);
+    $('#education').append(formattedOnlineURL);
   }
 };
 
@@ -158,16 +157,16 @@ education.display = function() {
 // Work Display
 
 work.display = function() {
+  $('#workExperience').append(HTMLworkStart);
   for (var i = 0; i < work.jobs.length; i++) {
-    $('#workExperience').append(HTMLworkStart);
     var formattedEmployer = HTMLworkEmployer.replace('%data%', work.jobs[i].employer);
     var formattedTitle = HTMLworkTitle.replace('%data%', work.jobs[i].title);
     var formattedEmployerTitle = formattedEmployer + formattedTitle;
     var formattedDates = HTMLworkDates.replace('%data%', work.jobs[i].dates);
     var formattedWorkDesc = HTMLworkDescription.replace('%data%', work.jobs[i].description);
-    $('#workExperience').children().next().append(formattedEmployer + formattedTitle);
-    $('#workExperience').children().next().append(formattedDates);
-    $('#workExperience').children().next().append(formattedWorkDesc);
+    $('#workExperience:last').append(formattedEmployer + formattedTitle);
+    $('#workExperience:last').append(formattedDates);
+    $('#workExperience:last').append(formattedWorkDesc);
   }
 };
 
@@ -178,20 +177,16 @@ work.display = function() {
 
 projects.display = function() {
   $('#projects').append(HTMLprojectStart);
-  
   for (var i = 0; i < projects.projects.length; i++) {
 
     var formattedProjectTitle = HTMLprojectTitle.replace('%data%', projects.projects[i].title);
-    $('#projects').children().next().append(formattedProjectTitle);
-
-    var formattedProjectDates = HTMLprojectDates.replace('%data%', projects.projects[i].dates);
-    $('#projects').children().next().append(formattedProjectDates);
-
+    var formattedProjectDates = HTMLprojectDates.replace('%data%', projects.projects[i].dates);   
     var formattedProjectDesc = HTMLprojectDescription.replace('%data%', projects.projects[i].description);
-    $('#projects').children().next().append(formattedProjectDesc);
-
     var formattedProjectImage = HTMLprojectImage.replace('%data%', projects.projects[i].images);
-    $('#projects').children().next().append(formattedProjectImage);
+    $('#projects:last').append(formattedProjectTitle);
+    $('#projects:last').append(formattedProjectDates);
+    $('#projects:last').append(formattedProjectDesc);
+    $('#projects:last').append(formattedProjectImage);
   }
 };
 
