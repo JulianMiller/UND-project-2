@@ -12,18 +12,19 @@ Cameron Pittman
 These are HTML strings. As part of the course, you'll be using JavaScript functions
 replace the %data% placeholder text you see in them.
 */
+var HTMLheaderBrand = '<a class="navbar-brand" href="#">%data%</a>';
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
 var HTMLheaderRole = '<span>%data%</span><hr>';
 
 var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
-var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
-var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
-var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
-var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
+var HTMLmobile = '<li class="flex-item"><span class="orange-text"><i class="fa fa-phone fa-2x"></i></span><span class="white-text">%data%</span></li>';
+var HTMLemail = '<li class="flex-item"><span class="orange-text"><i class="fa fa-envelope-o fa-2x"></i></span><span class="white-text">%data%</span></li>';
+var HTMLtwitter = '<li class="flex-item"><span class="orange-text"><i class="fa fa-twitter fa-2x"></i></span><span class="white-text">%data%</span></li>';
+var HTMLgithub = '<li class="flex-item"><span class="orange-text"><i class="fa fa-github-alt fa-2x"></i></span><span class="white-text">%data%</span></li>';
 var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
-var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
+var HTMLlocation = '<li class="flex-item"><span class="orange-text"><i class="fa fa-map-marker fa-2x"></i></span><span class="white-text">%data%</span></li>';
 
-var HTMLbioPic = '<img src="%data%" class="biopic">';
+var HTMLbioPic = '<img src="%data%" class="biopic img-circle">';
 var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 var HTMLwelcomeMessage = '<span class="welcome-message">%data%</span>';
 
@@ -37,11 +38,11 @@ var HTMLworkDates = '<div class="date-text">%data%</div>';
 var HTMLworkLocation = '<div class="location-text">%data%</div>';
 var HTMLworkDescription = '<p><br>%data%</p>';
 
-var HTMLprojectStart = '<div class="project-entry"></div>';
+var HTMLprojectStart = '<div class="project-entry col-md-3"></div>';
 var HTMLprojectTitle = '<a href="#">%data%</a>';
 var HTMLprojectDates = '<div class="date-text">%data%</div>';
 var HTMLprojectDescription = '<p><br>%data%</p>';
-var HTMLprojectImage = '<img src="%data%">';
+var HTMLprojectImage = '<img src="%data%" class="img-responsive">';
 
 var HTMLschoolStart = '<div class="education-entry"></div>';
 var HTMLschoolName = '<a href="#">%data%';
@@ -49,8 +50,9 @@ var HTMLschoolDegree = ' -- %data%</a>';
 var HTMLschoolDates = '<div class="date-text">%data%</div>';
 var HTMLschoolLocation = '<div class="location-text">%data%</div>';
 var HTMLschoolMajor = '<em><br>Major: %data%</em>';
-var HTMLonlineStart = '<div id="online-entry-%data%" class="education-entry"></div>';
 var HTMLonlineClasses = '<h3>Online Classes</h3>';
+var HTMLonlineStart = '<div id="online-entry-%data%" class="education-entry"></div>';
+
 var HTMLonlineTitle = '<a href="#">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
@@ -107,7 +109,99 @@ function initializeMap() {
   var locations;
 
   var mapOptions = {
-    disableDefaultUI: true
+    disableDefaultUI: true,
+    styles: [{
+  "elementType": "geometry",
+  "stylers": [{
+    "hue": "#ff4400"
+  }, {
+    "saturation": -68
+  }, {
+    "lightness": -4
+  }, {
+    "gamma": 0.72
+  }]
+}, {
+  "featureType": "road",
+  "elementType": "labels.icon"
+}, {
+  "featureType": "landscape.man_made",
+  "elementType": "geometry",
+  "stylers": [{
+    "hue": "#0077ff"
+  }, {
+    "gamma": 3.1
+  }]
+}, {
+  "featureType": "water",
+  "stylers": [{
+    "hue": "#00ccff"
+  }, {
+    "gamma": 0.44
+  }, {
+    "saturation": -33
+  }]
+}, {
+  "featureType": "poi.park",
+  "stylers": [{
+    "hue": "#44ff00"
+  }, {
+    "saturation": -23
+  }]
+}, {
+  "featureType": "water",
+  "elementType": "labels.text.fill",
+  "stylers": [{
+    "hue": "#007fff"
+  }, {
+    "gamma": 0.77
+  }, {
+    "saturation": 65
+  }, {
+    "lightness": 99
+  }]
+}, {
+  "featureType": "water",
+  "elementType": "labels.text.stroke",
+  "stylers": [{
+    "gamma": 0.11
+  }, {
+    "weight": 5.6
+  }, {
+    "saturation": 99
+  }, {
+    "hue": "#0091ff"
+  }, {
+    "lightness": -86
+  }]
+}, {
+  "featureType": "transit.line",
+  "elementType": "geometry",
+  "stylers": [{
+    "lightness": -48
+  }, {
+    "hue": "#ff5e00"
+  }, {
+    "gamma": 1.2
+  }, {
+    "saturation": -23
+  }]
+}, {
+  "featureType": "transit",
+  "elementType": "labels.text.stroke",
+  "stylers": [{
+    "saturation": -64
+  }, {
+    "hue": "#ff9100"
+  }, {
+    "lightness": 16
+  }, {
+    "gamma": 0.47
+  }, {
+    "weight": 2.7
+  }]
+}]
+
   };
 
   /* 
@@ -244,3 +338,4 @@ window.addEventListener('resize', function(e) {
   //Make sure the map bounds get updated on page resize
  map.fitBounds(mapBounds);
 });
+

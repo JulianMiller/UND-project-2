@@ -1,52 +1,58 @@
-// Click Logging Logic
+/** Click-Logging Logic */
+"use strict";
 
-$(document).click(function(loc) {
+$(document).click(function (loc) {
   var x = loc.pageX;
   var y = loc.pageY;
 
-  logClicks(x,y);
+  logClicks(x, y);
 });
 
-// Bio Info
+/** Bio Info */
 
- var bio = {
-  'name' : 'Julian Miller',
-  'role' : 'Web Developer',
+var bio = {
+  'name': '',
+  'role': 'Web Developer',
   'contacts': {
-      'mobile': '312-971-3244',
-      'email': 'julianmiller@me.com', 
-      'github': 'julianmiller',
-      'twitter': '@julianmiller',
-      'location': 'Chicago, IL'
-    },
-  'welcomeMessage': 'Education is the way forward', 
-  'skills': ['HTML', 'CSS', 'JavaScript','Ruby on Rails'],
-  'biopic': 'https://avatars2.githubusercontent.com/u/707128?v=3&s=460'
- };
-
- //Education Info
-
- var education = {
-  'schools': [{
-    'name': 'University of Connecticut',
-    'location': 'Storrs, CT',
-    'degree': 'BFA M.Ed Dual Degree Program',
-    'majors': ['Music Performance',' + ', 'Music Education'],
-    'dates': '1999 - 2004',
-    'url': 'http://www.uconn.edu/'
+    'mobile': '312-971-3244',
+    'email': 'julianmiller@me.com',
+    'github': 'julianmiller',
+    'twitter': '@julianmiller',
+    'location': 'Chicago, IL'
   },
-  
-  ],
-  'onlineCourses' : [{
-    'title' : 'Front End Developer Nanodegree',
-    'school' : ' Udacity',
-    'date' : '2015 - 2016',
-    'url' : 'http://www.udacity.com'
-  }
-  ]
+  'welcomeMessage': 'Education is the way forward',
+  'skills': ['HTML', 'CSS', 'JavaScript', 'Ruby on Rails'],
+  'biopic': 'https://avatars2.githubusercontent.com/u/707128?v=3&s=460'
 };
 
-// Work Info
+/** Education Info */
+
+var education = {
+  'schools': [{
+      'name': 'University of Connecticut',
+      'location': 'Storrs, CT',
+      'degree': 'BFA M.Ed Dual Degree Program',
+      'majors': ['Music Performance', ' + ', 'Music Education'],
+      'dates': '1999 - 2004',
+      'url': 'http://www.uconn.edu/'
+    },
+
+  ],
+  'onlineCourses': [{
+    'title': 'Front End Developer Nanodegree',
+    'school': ' Udacity',
+    'date': '2015 - 2016',
+    'url': 'http://www.udacity.com'
+  }, {
+    'title': 'Big Data in Education',
+    'school': ' Columbia University',
+    'date': '2013',
+    'url': 'http://www.coursera.com'
+
+  }]
+};
+
+/** Work Info */
 
 var work = {
   'jobs': [{
@@ -55,39 +61,50 @@ var work = {
     'location': 'Chicago, IL',
     'dates': 'June 2012 - Present',
     'description': 'Anything and Everything'
-  },
-  {
+  }, {
     'employer': 'Suntimes Media',
     'title': 'Frontend Developer',
     'location': 'Chicago, IL',
     'dates': '15 Aug, 2011' + ' - ' + 'June 10, 2012',
     'description': 'Responsible for the frontend of over 47 suntimes properties.'
-  }
-  ]
+  }]
 };
 
-// Projects Info
+/** Projects Info */
 
 var projects = {
-  'projects': [
-  {
-    'title' : 'Dongletap',
-    'dates' : 'April 2012',
-    'description' : 'Context-aware social network',
-    'images' : ['https://www.placeimg.com/400/225/tech','https://placeimg.com/400/225/people']
-  },
-  {
-    'title' : 'Syrv.us',
-    'dates' : '2010 - 2011',
-    'description' : 'Syrv.us is a MayDay app for your smart tv. Click, pick, and go!',
-    'images' : ['https://www.placeimg.com/400/225/tech']
-  },
-  ]
+  'projects': [{
+    'title': 'EdVentory',
+    'dates': 'April 2012',
+    'description': 'Edtech Directory',
+    'images': ['images/edventory.png']
+  }, {
+    'title': 'Syrv.us',
+    'dates': '2010 - 2011',
+    'description': 'MayDay app for your smart tv. Click, pick, and go!',
+    'images': ['https://www.placeimg.com/400/225/tech']
+  },{
+    'title': 'In Pieces',
+    'dates': '2005',
+    'description': 'A musical about Frankenstein and his monster',
+    'images': ['images/ip.jpg']
+  },]
 };
 
-// Bio Display
+var brand = {
+  'name': 'Julian Miller'
+};
 
-bio.display = function() {
+/** Brand Display */
+brand.display = function () {
+  var formattedBrand = HTMLheaderBrand.replace('%data%', brand.name);
+  $('.navbar-header').append(formattedBrand);
+};
+
+
+/** Bio Display */
+
+bio.display = function () {
 
   var formattedRole = HTMLheaderRole.replace('%data%', bio.role);
   var formattedName = HTMLheaderName.replace('%data%', bio.name);
@@ -97,12 +114,11 @@ bio.display = function() {
   var formattedEmail = HTMLemail.replace('%data%', bio.contacts.email);
   var formattedGithub = HTMLgithub.replace('%data%', bio.contacts.github);
   var formattedLocation = HTMLlocation.replace('%data%', bio.contacts.location);
-  $('#header').prepend(formattedName,formattedRole);
-  $('#header').append(profilePic,formattedWelcomeMsg);
-  $('#topContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedLocation);
-  $('#footerContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedLocation);
+  $('#header').prepend(formattedName, formattedRole);
+  $('#header').append(profilePic, formattedWelcomeMsg);
+  $('#topContacts,#footerContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedLocation);
   $('#header').append(HTMLskillsStart);
-  
+
 
   var formattedSkills = HTMLskills.replace('%data%', bio.skills[0]);
   $('#header').append(formattedSkills);
@@ -114,10 +130,9 @@ bio.display = function() {
   $('#header').append(formattedSkills);
 };
 
+/** School Display */
 
-// School Display
-
-education.display = function() {
+education.display = function () {
   //School logic
   for (var i = 0; i < education.schools.length; i++) {
     $('#education').append(HTMLschoolStart);
@@ -137,25 +152,23 @@ education.display = function() {
     $('#education').children().next().append(formattedSchoolMajor);
   };
 
-  //Online course logic
+  /** Online course logic */
 
+  $("#education").append(HTMLonlineClasses);
+  $("#education").append(HTMLschoolStart);
   for (var i = 0; i < education.onlineCourses.length; i++) {
-    $('#education').append(HTMLonlineClasses);
+
     var formattedOnlineTitle = HTMLonlineTitle.replace('%data%', education.onlineCourses[i].title);
     var formattedOnlineSchool = HTMLonlineSchool.replace('%data%', education.onlineCourses[i].school);
     var formattedOnlineDate = HTMLonlineDates.replace('%data%', education.onlineCourses[i].date);
     var formattedOnlineURL = HTMLonlineURL.replace('%data%', education.onlineCourses[i].url);
-    $('#education').append(formattedOnlineTitle);
-    $('#education').append(formattedOnlineSchool);
-    $('#education').append(formattedOnlineDate);
-    $('#education').append(formattedOnlineURL);
+    $('.education-entry:last').append(formattedOnlineTitle + formattedOnlineSchool, formattedOnlineDate, formattedOnlineURL);
   }
 };
 
+/** Work Display */
 
-// Work Display
-
-work.display = function() {
+work.display = function () {
   $('#workExperience').append(HTMLworkStart);
   for (var i = 0; i < work.jobs.length; i++) {
     var formattedEmployer = HTMLworkEmployer.replace('%data%', work.jobs[i].employer);
@@ -163,29 +176,22 @@ work.display = function() {
     var formattedEmployerTitle = formattedEmployer + formattedTitle;
     var formattedDates = HTMLworkDates.replace('%data%', work.jobs[i].dates);
     var formattedWorkDesc = HTMLworkDescription.replace('%data%', work.jobs[i].description);
-    $('#workExperience:last').append(formattedEmployer + formattedTitle);
-    $('#workExperience:last').append(formattedDates);
-    $('#workExperience:last').append(formattedWorkDesc);
+    $('.work-entry:last').append(formattedEmployer + formattedTitle);
+    $('.work-entry:last').append(formattedDates, formattedWorkDesc);
   }
 };
 
+/** Projects Display */
 
-
+projects.display = function () {
   
-//Projects Display
-
-projects.display = function() {
-  $('#projects').append(HTMLprojectStart);
   for (var i = 0; i < projects.projects.length; i++) {
-
+    $('#projects').append(HTMLprojectStart);
     var formattedProjectTitle = HTMLprojectTitle.replace('%data%', projects.projects[i].title);
-    var formattedProjectDates = HTMLprojectDates.replace('%data%', projects.projects[i].dates);   
+    var formattedProjectDates = HTMLprojectDates.replace('%data%', projects.projects[i].dates);
     var formattedProjectDesc = HTMLprojectDescription.replace('%data%', projects.projects[i].description);
     var formattedProjectImage = HTMLprojectImage.replace('%data%', projects.projects[i].images);
-    $('#projects:last').append(formattedProjectTitle);
-    $('#projects:last').append(formattedProjectDates);
-    $('#projects:last').append(formattedProjectDesc);
-    $('#projects:last').append(formattedProjectImage);
+    $('.project-entry:last').append(formattedProjectTitle, formattedProjectDates, formattedProjectDesc, formattedProjectImage);
   }
 };
 
@@ -193,9 +199,10 @@ bio.display();
 education.display();
 work.display();
 projects.display();
+brand.display();
 
 
 
-// map logic
+/** map logic */
 
 $('#mapDiv').append(googleMap);

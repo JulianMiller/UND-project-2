@@ -12,10 +12,20 @@ h6 {
   padding:0;
   margin:0;
   font-family: "Roboto", sans-serif;
+  list-style-type: none;
 }
 
 .clear-fix {
   overflow: auto;
+}
+
+body {
+    background: #fefefe;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+.project-entry {
+  margin-left:60px;
 }
 
 .education-entry,
@@ -88,7 +98,7 @@ p {
 a {
   color: #1199c3;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 0;
   display: block;
 }
 
@@ -100,16 +110,19 @@ a {
 }
 
 #skills-h3 {
-  color: #f5ae23;
+  color: #f4c141;
   display: none;
+}
+#name{
+  color:#fff;
 }
 
 .orange {
-  background-color: #f5ae23;
+  background-color: #d0ccca;
 }
 
 .orange-text {
-  color: #f5ae23;
+  color: #f4c141;
 }
 
 .white-text {
@@ -122,14 +135,14 @@ a {
   padding-bottom: 10px;
   clear:both;
 }
-
+/* To Do - rename */
 .dark-gray {
-  background-color: #4a4a4a;
+  background-color: #4498b2;
 }
 
-/* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background: url("../images/bus blueprint.png");
+  background-size: cover;
 }
 
 .flex-box {
@@ -151,7 +164,7 @@ ul {
 
 .biopic {
   float: left;
-  padding: 10px;
+  padding: 0px;
   width: 200px;
   display: none;
 }
@@ -214,3 +227,11 @@ span {
     display: block;
   }
 }
+
+.no-top-margin{
+  margin-top:0;
+}
+
+
+
+
